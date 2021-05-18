@@ -2,16 +2,18 @@ package com.xoco.nuniez.yugabyte.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-public class User {
+public class User extends AuditDate {
     @Id
     @Column(columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +53,6 @@ public class User {
     //@NotBlank
     private String source;
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime created_at;
+    //@Column(columnDefinition = "TIMESTAMP")
+    //private LocalDateTime created_at;
 }
